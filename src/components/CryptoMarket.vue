@@ -1,6 +1,12 @@
 <template>
   <div class="crypto-market">
+   
     <div class="crypto-market__controls">
+       <div class="crypto-market__controls__info">
+        Showing {{currentPage !== 1 ? (currentPage - 1) * perPage : 1}} 
+          -  
+        {{currentPage !== 1 ? currentPage * perPage : perPage}} out of 250
+      </div>
       <b-pagination
         v-model="currentPage"
         :total-rows="250"
@@ -92,6 +98,9 @@ export default Vue.extend({
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    &__info {
+      margin-bottom: 1rem;
+    }
     &__filters {
       &__perPage {
         margin-bottom: 1rem;
