@@ -1,0 +1,105 @@
+<template>
+  <div class="collapsible-item">
+     <div class="wrap-collabsible"> 
+       <input id="collapsible3" class="toggle" type="checkbox"> 
+       <label for="collapsible3" class="lbl-toggle" tabindex="0">{{ marketData.market.name }} - USD</label>
+       <div class="collapsible-content"><div class="content-inner">
+         <p>{{ marketData }}</p>
+       </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import Vue from 'vue';
+import { CryptoMarketData } from '@/types'
+
+export default Vue.extend({
+  props: {
+    marketData: {
+      type: Object as () => CryptoMarketData,
+      required: true
+    },
+  },
+  mounted(){
+    console.log(this.marketData)
+  },
+  name: 'CollapsibleItem',
+
+});
+</script>
+
+<style scoped lang="scss">
+  .wrap-collabsible {
+  margin-bottom: 1.2rem 0;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+.lbl-toggle {
+  display: block;
+
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  text-align: center;
+
+  padding: 1rem;
+
+  color: #DDD; background: #0069ff;
+
+  cursor: pointer;
+
+  border-radius: 7px;
+  transition: all 0.25s ease-out;
+}
+
+.lbl-toggle:hover {
+  color: #7C5A0B;
+}
+
+.lbl-toggle::before {
+  content: ' ';
+  display: inline-block;
+
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid currentColor;
+  vertical-align: middle;
+  margin-right: .7rem;
+  transform: translateY(-2px);
+
+  transition: transform .2s ease-out;
+}
+
+.toggle:checked + .lbl-toggle::before {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.collapsible-content {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height .25s ease-in-out;
+}
+
+.toggle:checked + .lbl-toggle + .collapsible-content {
+  max-height: 100vh;
+}
+
+.toggle:checked + .lbl-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.collapsible-content .content-inner {
+  background: rgba(0, 105, 255, .2);
+  border-bottom: 1px solid rgba(0, 105, 255, .45);
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  padding: .5rem 1rem;
+}
+</style>
