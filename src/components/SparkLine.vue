@@ -22,6 +22,7 @@ export default Vue.extend({
     marketName: String
   },
   created: function () {
+    console.log(this.sparkLineIn7d)
     // this.sparkline()
   }
 });

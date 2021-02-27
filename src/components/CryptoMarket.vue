@@ -16,6 +16,7 @@
         </div>
       </div>
     </div>
+    <b-alert variant="danger" show v-if="errorMessage">{{errorMessage}}</b-alert>
     <div class="crypto-market__item-wrapper" v-if="!loading">
       <div class="crpto-market__item-wrapper__item" v-for="market in cryptoMarketsData" :key="market.id">
         <CollapsibleItem :marketData={market} />
@@ -51,32 +52,33 @@ export default Vue.extend({
         { value: 10, text: '10' },
         { value: 20, text: '20' },
         { value: 50, text: '50' },
-      ]
+      ],
+      errorMessage: ''
     };
   },
   created: async function () {
-     const marketData = await this.getCryptoMarketData(this.currentPage, this.perPage);
-     this.cryptoMarketsData = marketData
-     this.loading = false
+     await this.getCryptoMarketData(this.currentPage, this.perPage);
   },
   methods:{
     async getCryptoMarketData(pageNumber: number, perPage: number) {
-      const marketData = await cryptoMarketService(pageNumber, perPage);
-      return marketData
+      this.errorMessage = ""
+       try {
+        const marketData = await cryptoMarketService(pageNumber, perPage);
+        this.cryptoMarketsData = marketData
+      } catch(e) {
+        this.errorMessage = 'An error occured, please try again'
+      }
+      this.loading = false
     }
   },  
   watch: {
     currentPage: async function (val) {
       this.loading = true
-      const marketData = await this.getCryptoMarketData(val, this.perPage);
-      this.cryptoMarketsData = marketData
-      this.loading = false
+      await this.getCryptoMarketData(val, this.perPage);
     },
     perPage: async function (val) {
       this.loading = true
-      const marketData = await this.getCryptoMarketData(this.currentPage, val);
-      this.cryptoMarketsData = marketData
-      this.loading = false
+      await this.getCryptoMarketData(this.currentPage, val);
     }
   }
 });
