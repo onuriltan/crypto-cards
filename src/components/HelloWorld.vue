@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <img alt="Vue logo" src="../assets/logo.svg" width="100">
+    <img alt="Vue logo" src="../assets/logo.svg" width="150">
     <h1>{{ msg }}</h1>
     <p>
       This project will show extendible crypto card components that you can moniyor markets<br>

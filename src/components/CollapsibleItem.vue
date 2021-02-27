@@ -63,9 +63,9 @@ export default Vue.extend({
         display: flex;
         align-items: center;
         &__image {
-           width: 20px;
-          height: 20px;
-          padding-right: 5px;
+           width: 30px;
+          height: 30px;
+          margin-right: 5px;
         }
         &__name {
           display: flex;
