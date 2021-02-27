@@ -9,6 +9,9 @@
         </div>
       </div>
       <div class="collapsible-item__toggle__item">
+        <SparkLine :sparkLineIn7d="marketData.market.sparkline_in_7d.price" :marketName="marketData.market.symbol"/>
+      </div>
+      <div class="collapsible-item__toggle__item">
          <div class="collapsible-item__toggle__item__price">
             <div class="collapsible-item__toggle__item__price__value">${{ marketData.market.current_price }}</div>
              <div class="collapsible-item__toggle__item__price__name">Price</div>
@@ -26,19 +29,19 @@
 <script lang="ts">
 import Vue from 'vue';
 import { CryptoMarketData } from '@/types'
+import SparkLine from './SparkLine.vue';
 
 export default Vue.extend({
+  name: 'CollapsibleItem',
+  components: {
+    SparkLine
+  },
   props: {
     marketData: {
       type: Object as () => CryptoMarketData,
       required: true
     },
-  },
-  name: 'CollapsibleItem',
-  created() {
-    console.log(this.marketData)
   }
-
 });
 </script>
 
