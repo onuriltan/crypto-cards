@@ -3,10 +3,10 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue from "vue";
 
 export default Vue.extend({
-  name: 'Spinner',
+  name: "Spinner",
 });
 </script>
 
@@ -25,7 +25,8 @@ export default Vue.extend({
   animation: spinner 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
 @keyframes spinner {
-  0%, 100% {
+  0%,
+  100% {
     animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
   }
   0% {
