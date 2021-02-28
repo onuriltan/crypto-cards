@@ -39,6 +39,16 @@
           </div>
         </div>
       </div>
+      <div class="collapsible-item__toggle__item">
+        <div class="collapsible-item__toggle__item__price">
+          <div class="collapsible-item__toggle__item__price__value">
+            ${{ marketData.market.total_volume.toLocaleString('en-EN') }}
+          </div>
+          <div class="collapsible-item__toggle__item__price__name">
+            Total Volume
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
