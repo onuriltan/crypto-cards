@@ -14,7 +14,10 @@
       <div class="collapsible-item__toggle__item">
          <div class="collapsible-item__toggle__item__price">
             <div class="collapsible-item__toggle__item__price__value">${{ marketData.market.current_price }}</div>
-             <div class="collapsible-item__toggle__item__price__name">Price</div>
+             <div class="collapsible-item__toggle__item__price__name"
+                :class="{ 'collapsible-item__toggle__item__price__name--red': priceChange < 0,
+                          'collapsible-item__toggle__item__price__name--green': priceChange > 0}"
+             >{{ priceChange }}%</div>
          </div>
       </div>
     </div>
@@ -28,7 +31,6 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { CryptoMarketData } from '@/types'
 import SparkLine from './SparkLine.vue';
 
 export default Vue.extend({
@@ -36,9 +38,14 @@ export default Vue.extend({
   components: {
     SparkLine
   },
+  data() {
+    return {
+      priceChange: this.marketData.market.price_change_percentage_24h.toFixed("2")
+    }
+  },
   props: {
     marketData: {
-      type: Object as () => CryptoMarketData,
+      type: Object,
       required: true
     },
   }
@@ -78,6 +85,7 @@ export default Vue.extend({
             text-transform: uppercase;
           }
           &__name {
+          
             font-size: 1rem;
           }
         }
@@ -91,6 +99,12 @@ export default Vue.extend({
           }
           &__name {
             font-size: 1rem;
+            &--red {
+              color: red
+            }
+            &--green {
+              color: green
+            }
           }
         }
       }
