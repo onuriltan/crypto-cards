@@ -4,8 +4,8 @@ Crypto Cards is an app where you can keep track of the top 250 coins.
 
 ## Technical Details
 
-App is bootstrapped by Vue CLI
-Used scss with BEM architecture and bootstrap with Vue-Bootstrap.
+- App is bootstrapped by Vue CLI
+- Used scss with BEM architecture and bootstrap with Vue-Bootstrap.
 
 ## How to Use
 
