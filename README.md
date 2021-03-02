@@ -14,5 +14,5 @@ Crypto Cards is an app where you can keep track of the top 250 coins.
 
 ### Development
 
-To install the dependencies, run `yarn` or `npm install`
-To run the Vue client, run `yarn serve` or `npm run serve`.
+- To install the dependencies, run `yarn` or `npm install`
+- To run the Vue client, run `yarn serve` or `npm run serve`.
